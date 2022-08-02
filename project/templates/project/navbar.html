@@ -1,0 +1,16 @@
+<div class="nav-wrapper">
+   
+    <h4><a href="{% url 'home' %}">Home</a></h4>
+    
+
+    <ul id="navigation">
+        <li><a href="{% url 'home' %}#contact">Contact</a></li>|
+        <li><a href="{% url 'home' %}#my_skills">My Skills</a></li>|
+        <li><a href="{% url 'home' %}#my_portfolio">My Portfolio</a></li>|
+        
+        {% if request.user.is_authenticated%}
+        <li><a href="{% url 'create_post' %}">Create Project</a></li>
+        {% endif%}
+
+    </ul>
+</div>

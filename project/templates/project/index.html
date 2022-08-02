@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<title>Sotiris Podaras</title>
+
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300&family=Fira+Sans:wght@300&display=swap" rel="stylesheet">
+	
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+	<link id="theme-style" rel="stylesheet" type="text/css" href="">
+</head>
+<body>
+
+	<section class="s1">
+		<div class="main-container">
+			<div class="greeting-wrapper">
+				<h1>Sotiris Podaras</h1>
+			</div>
+
+
+			<div class="intro-wrapper">
+				{% include 'project/navbar.html' %}
+		
+				<div class="left-column">
+					<img id="profile_pic" src="{% static 'images/images/my_photo.jpg' %}">
+				
+				</div>
+
+				<div class="right-column">
+
+					
+						<div id="preview">
+							
+							<h3>About me</h3>
+							<p>I am a postgraduate student at Hellenic Open University who loves programming.</p>
+							
+							
+						</div>
+					
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="s2">
+		<div class="main-container">
+
+			<div class="about-wrapper">
+				<div class="about-me">
+					
+					<h4>More about me</h4>
+
+					<p style="background-color:#AAFF00;border:3px solid #808080">Consistent and goal-oriented <b>Back-End Developer</b>, eager to fully commit on 
+						an entry-level position in a dynamic organization.
+						<br><br> Active listener, highly 
+						disciplined and problem-solving personality, with a sufficient knowledge on 
+						<b>Python</b>, <b>Java</b> and <b>SQL</b> programming languages.
+						<br><br>
+						 Adaptable, patient, collaborative spirit, 
+						willing to face new challenges. My programming knowledge, coupled with my volition to 
+						learn new technical skills, will effectively help me integrate into your 
+						company's requirements</p>
+
+					
+
+					<p><a target="_blank" href="{% static 'CV.pdf' %}"><br><br>Download CV</a></p>
+					<hr>
+					
+					<a name="my_skills"></a>
+					<h4 style="text-align:center">My Skills</h4>
+					
+
+					
+
+					<div id="skills">
+						<ul style="text-indent:-60px">
+							<b><li>Python</li></b>
+							<b><li>Java</li></b>
+							<b><li>SQL</li></b>
+							<b><li>HTML/CSS</li></b>
+							<b><li>Django</li></b>
+							
+						</ul>
+
+						
+					</div>
+
+					<p style="text-align:center"><b>Other skills</b></p>
+
+					<div id="skills">
+						<ul style="text-indent:45px">
+							<i><li>Django REST Framework</li></i>
+							<i><li>MySQL</li></i>
+							<i><li>Git</li></i>
+							<i><li>JSON</li></i>
+							<i><li>Postman</li></i>
+								
+						</ul>
+
+						
+					</div>
+
+				</div>
+
+					
+
+				</div>
+
+				
+
+				
+				<div class="social-links">
+					
+					<h3>Find me on LinkedIn & Github</h3>
+
+					<b><p style="text-indent:70px">LinkedIn:<a target="_blank" href="https://www.linkedin.com/in/sotiris-podaras-41ba55245/"> Sotiris Podaras</a></p>
+					
+					<b><p style="text-align:center">Github:<a target="_blank" href="https://github.com/sotiris93"> sotiris93</a></p>
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+	<section class="s1">
+		<div class="main-container">
+			<a name="my_portfolio"></a>
+			<h3 style="text-align: center;">My Portfolio</h3>
+
+			<div class="post-wrapper">
+				{% for post in posts %}
+				<div>
+					<div class="post">
+						<img class="thumbnail" src="{{post.front_page.url}}">
+						<div class="post-preview">
+							<h6 class="post-title">{{post.title}}</h6>
+							<p class="post-intro">{{post.sub_title}}</p>
+							<a href="{% url 'post' post.slug %}">Read More</a>
+						</div>
+					</div>
+				</div>
+				{%endfor %}
+
+			
+
+			</div>
+			<p align="center">
+			<a href="{% url 'posts' %}">View More</a>
+			</p>
+		</div>
+	</section>
+
+	<section class="s2">
+		<div class="main-container">
+			<a href=""></a>
+			<h3 style="text-align: center;">Contact Me</h3>
+
+			<form id="contact-form" method="POST" action="{% url 'send_email' %}">
+				{% csrf_token %}
+				<a name="contact"></a>
+
+				<label>Name</label>
+				<input class="input-field" type="text" name="name">
+
+				<label>Subject</label>
+				<input class="input-field" type="text" name="subject">
+
+				<label>Email</label>
+				<input class="input-field" type="text" name="email">
+
+				<label>Message</label>
+				<textarea class="input-field" name="message"></textarea>
+
+				<input id="submit-btn" type="submit" value="Send" style="font-weight:bold;font-size:20px;">
+			</form>
+		</div>
+	</section> 
+	<script type="text/javascript">
+		let static = "{% static 'css' %}"
+	</script>
+<script type="text/javascript" src="{% static 'js/script.js' %}"></script>  
+</body>
+</html>
